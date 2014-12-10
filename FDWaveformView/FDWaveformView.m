@@ -212,7 +212,17 @@
         }
         CGRect frame = CGRectMake(self.frame.size.width*scaledStart, 0, self.frame.size.width*scaledWidth, self.frame.size.height);
         self.image.frame = self.highlightedImage.frame = frame;
-        self.clipping.frame = CGRectMake(0,0,self.frame.size.width*scaledProgress,self.frame.size.height);
+        
+        self.clipping.frame = CGRectMake(self.frame.size.width*scaledProgress,
+                                         0,
+                                         self.frame.size.width,
+                                         self.frame.size.height);
+        
+        self.highlightedImage.frame = CGRectMake(-self.frame.size.width*scaledProgress,
+                                                 0,
+                                                 self.frame.size.width,
+                                                 self.frame.size.height);
+        
         self.clipping.hidden = self.progressSamples <= self.zoomStartSamples;
         return;
     }
